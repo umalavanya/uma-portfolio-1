@@ -173,10 +173,15 @@
         }
 
         .profile-img-container {
-            flex: 0 0 300px;
-            margin-left: 50px;
-            animation: fadeInRight 1s ease-out;
-        }
+    flex: 0 0 300px;
+    margin-left: 50px;
+    animation: fadeInRight 1s ease-out;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
         @keyframes fadeInRight {
             from {
@@ -190,20 +195,25 @@
             }
         }
 
-        .profile-img {
-            width: 100%;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 8px solid var(--mango-yellow);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background-color: #f0e6d6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--orange);
-            font-size: 5rem;
-        }
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid var(--mango-yellow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background-color: #f0e6d6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
         .btn {
             display: inline-block;
@@ -470,31 +480,43 @@
             color: var(--orangish-black);
         }
 
-        .contact-grid {
+        .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .contact-info {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            color: var(--orange);
-            margin-bottom: 15px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
         }
 
         .contact-info h3 {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            color: var(--orangish-black);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .social-links a {
@@ -506,7 +528,7 @@
             background-color: white;
             color: var(--orange);
             border-radius: 50%;
-            margin: 0 10px;
+            margin-right: 15px;
             font-size: 1.3rem;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -516,6 +538,67 @@
             background-color: var(--orangish-black);
             color: white;
             transform: translateY(-5px);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--orangish-black);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: #c62828;
+            border: 1px solid #f44336;
+            display: block;
         }
 
         /* Footer */
@@ -536,6 +619,7 @@
         .copyright {
             color: #aaa;
             font-size: 0.9rem;
+            margin-top: 10px;
         }
 
         /* Responsive Design */
@@ -587,6 +671,11 @@
             .timeline-item:nth-child(odd) .timeline-content {
                 border-left: 3px solid var(--orange);
                 border-right: none;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
@@ -647,6 +736,10 @@
             .profile-img {
                 width: 250px;
                 height: 250px;
+            }
+
+            .contact-form {
+                padding: 20px;
             }
         }
 
@@ -735,7 +828,7 @@
                 </div>
                 <div class="profile-img-container float">
                     <div class="profile-img">
-                        <i class="fas fa-user-circle"></i>
+                        <div><img src="uma-profile-pic.jpg"></div>
                     </div>
                 </div>
             </div>
@@ -883,41 +976,73 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
+            <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <strong>Umalavanya Chintapanti</strong>
+                                <p>Full Stack Java Developer</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>Education</strong>
+                                <p>Ph.D. in Theoretical Condensed Matter Physics</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <strong>Specialization</strong>
+                                <p>Full Stack Java Development</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Email</h3>
-                    <p>umalavanya7@gmail.com</p>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Education</h3>
-                    <p>Ph.D. in Theoretical Condensed Matter Physics</p>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Specialization</h3>
-                    <p>Full Stack Java Development</p>
-                </div>
-            </div>
 
-            <div class="social-links">
-                <a href="http://www.linkedin.com/in/umalavanya-chintapanti-53a1b6107" target="_blank" class="bounce">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/umalavanya?tab=overview&from=2026-01-01" target="_blank" class="bounce">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://scholar.google.com/citations?hl=en&tzom=300&user=Z0JcNVoAAAAJ" target="_blank"
-                    class="bounce">
-                    <i class="fas fa-graduation-cap"></i>
-                </a>
+                    <h3>Connect with me</h3>
+                    <div class="social-links">
+                        <a href="http://www.linkedin.com/in/umalavanya-chintapanti-53a1b6107" target="_blank"
+                            class="bounce">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/umalavanya?tab=overview&from=2026-01-01" target="_blank"
+                            class="bounce">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?hl=en&tzom=300&user=Z0JcNVoAAAAJ" target="_blank"
+                            class="bounce">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send me a message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -938,7 +1063,7 @@
                     <i class="fas fa-graduation-cap"></i>
                 </a>
             </div>
-            <p class="copyright">© 2023 Umalavanya Chintapanti. All rights reserved.</p>
+            <p class="copyright">© <span id="currentYear"></span> Umalavanya Chintapanti. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1000,6 +1125,110 @@
                 header.style.backgroundColor = '';
             }
         });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                showFormMessage('Please fill in all fields.', 'error');
+                return;
+            }
+
+            // Email validation regex
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showFormMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // In a real implementation, you would send this data to a server
+            // For now, we'll simulate a successful submission
+            simulateEmailSubmission(name, email, subject, message);
+        });
+
+        function simulateEmailSubmission(name, email, subject, message) {
+            // Show loading state
+            const submitBtn = document.querySelector('#contactForm .btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Simulate API call with a delay
+            setTimeout(() => {
+                // In a real implementation, you would:
+                // 1. Use a backend service (PHP, Node.js, etc.) to send the email
+                // 2. Use a service like EmailJS, Formspree, or similar
+                // 3. Configure the service to send emails to umalavanya7@gmail.com
+
+                // For demonstration, we'll show a success message
+                showFormMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon!', 'success');
+
+                // Reset form
+                document.getElementById('contactForm').reset();
+
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+
+                // Log the form data (in production, this would be sent to your server)
+                console.log('Contact Form Submission:');
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Subject:', subject);
+                console.log('Message:', message);
+                console.log('This would be sent to: umalavanya7@gmail.com');
+
+            }, 1500);
+        }
+
+        function showFormMessage(text, type) {
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = text;
+            messageEl.className = `form-message ${type}`;
+
+            // Auto-hide message after 5 seconds
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        // Real implementation using EmailJS (commented out - you need to set this up)
+        /*
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+        
+        // Updated form submission function for EmailJS
+        function sendEmailWithEmailJS(name, email, subject, message) {
+            const templateParams = {
+                to_name: "Umalavanya",
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message
+            };
+            
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    showFormMessage('Thank you! Your message has been sent successfully.', 'success');
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    showFormMessage('Sorry, there was an error sending your message. Please try again later.', 'error');
+                });
+        }
+        */
     </script>
 </body>
 
